@@ -1,0 +1,9 @@
+### создание образа
+docker build -t blog-frontend .
+
+
+### старт образа
+docker run -it -p 3000:80 blog-frontend
+
+
+

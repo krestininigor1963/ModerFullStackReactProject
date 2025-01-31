@@ -1,0 +1,7 @@
+### Сначала стартуем создание и запуск mongodb
+docker run -d --name dbserver -p 27017:27017 --restart unless-stopped mongo:6.0.4
+docker run -it --name dbserver -p 27017:27017 mongo
+
+docker run -it -e PORT=3001 -e DATABASE_URL=mongodb://172.17.0.2:27017/blog -p 3001:3001 blog-backend
+
+
