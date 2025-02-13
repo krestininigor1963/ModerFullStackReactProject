@@ -1,0 +1,14 @@
+• docker container prune: This removes all stopped containers
+• docker image prune: This removes all dangling images (images not tagged and not referenced by any container)
+• docker image prune -a: This removes all images not used by any containers
+• docker volume prune: This removes all volumes not used by any containers
+• docker network prune: This cleans up networks not used by any containers
+• docker system prune: This prunes everything except volumes
+• docker system prune --volumes: This prunes everything
+
+
+
+Для удаления определённого контейнера: docker rm <container name or id>
+Для удаления всех контейнеров, независимо от состояния: docker rm -f $(docker ps -qa)
+Также для удаления контейнера и его тома (volume) можно использовать команду: docker rm -v CONTAINER_ID
+Ещё один способ удалить все контейнеры Docker одной строкой: docker stop $(docker ps -qa) && docker rm $(docker ps -qa)

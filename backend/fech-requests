@@ -1,0 +1,43 @@
+// Создание usera
+const res = await fetch('http://localhost:3001/api/v1/user/signup', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: 'dan', password: 'hunter2'
+		})
+})
+
+console.log(await res.json())
+
+
+const res = await fetch('http://localhost:3001/api/v1/user/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'dan', password: 'hunter2'
+      })
+    })
+
+console.log(await res.json())   
+
+
+// доступ к маршрутам без входа в систему.
+const res = await fetch('http://localhost:3001/api/v1/posts', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ title: 'Test Post' })
+})
+console.log(await res.json())
+
+
+// Попробуйте создать новый пост; вы увидите, что он создан пользователем, идентифицированным в JWT. 
+// Вы можете сделать это, выполнив следующий код в консоли браузера (не забудьте заменить <TOKEN> на ваш ранее сгенерированный JWT):
+const res = await fetch('http://localhost:3001/api/v1/posts', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2EwYTZjZjBhNWJiMjU5YzBjN2IxODciLCJpYXQiOjE3Mzg1OTA2NjYsImV4cCI6MTczODY3NzA2Nn0.xo4bZHrM4VG-8PZcDlZ88PpfymyVuYsBLv-mCWa0GpE'
+  },
+  body: JSON.stringify({ title: 'Test Post' })
+})
+console.log(await res.json())
